@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عيادة نور — نظام إدارة العيادات</title>
+<meta name="description" content="نظام متكامل لإدارة العيادات والصيدليات: مرضى، مواعيد، مخزون، فواتير وتقارير.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f766e'/><text x='50' y='72' font-size='54' font-family='monospace' font-weight='bold' fill='white' text-anchor='middle'>+</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ======== Login ======== -->
+<div id="loginOverlay" class="login-overlay">
+  <div class="login-card">
+    <div class="login-logo">+</div>
+    <h1>عيادة نور</h1>
+    <p class="login-sub">نظام إدارة العيادات والصيدليات</p>
+    <form id="loginForm" autocomplete="off">
+      <label>اسم المستخدم</label>
+      <input type="text" id="loginUser" placeholder="admin" required>
+      <label>كلمة المرور</label>
+      <input type="password" id="loginPass" placeholder="••••••••" required>
+      <div id="loginErr" class="login-err" hidden>بيانات الدخول غير صحيحة</div>
+      <button type="submit" class="btn btn-primary btn-block">دخول</button>
+    </form>
+    <p class="login-hint">الحساب الافتراضي: admin / admin123</p>
+  </div>
+</div>
+
+<!-- ======== App ======== -->
+<div id="app" hidden>
+<aside class="sidebar" id="sidebar">
+  <div class="side-brand">
+    <div class="brand-badge">+</div>
+    <div>
+      <div class="brand-name">عيادة نور</div>
+      <div class="brand-sub">Clinic Management</div>
+    </div>
+  </div>
+  <nav class="side-nav">
+    <a class="nav-link active" data-view="dashboard"><span class="ico">◧</span>لوحة التحكم</a>
+    <a class="nav-link" data-view="patients"><span class="ico">☺</span>المرضى</a>
+    <a class="nav-link" data-view="doctors"><span class="ico">✚</span>الأطباء</a>
+    <a class="nav-link" data-view="appointments"><span class="ico">◷</span>المواعيد</a>
+    <a class="nav-link" data-view="pharmacy"><span class="ico">❋</span>الصيدلية</a>
+    <a class="nav-link" data-view="invoices"><span class="ico">▤</span>الفواتير</a>
+    <a class="nav-link" data-view="reports"><span class="ico">▤▤</span>التقارير</a>
+    <a class="nav-link" data-view="settings"><span class="ico">⚙</span>الإعدادات</a>
+  </nav>
+  <div class="side-foot">
+    <div class="side-user"><span class="avatar">A</span><div><div class="u-name">المدير</div><div class="u-role">admin</div></div></div>
+    <button class="btn-ghost" id="logoutBtn">تسجيل الخروج</button>
+  </div>
+</aside>
+
+<main class="main">
+  <header class="topbar">
+    <button class="burger" id="burgerBtn">☰</button>
+    <h2 id="pageTitle">لوحة التحكم</h2>
+    <div class="top-actions">
+      <span class="date-chip" id="todayChip"></span>
+    </div>
+  </header>
+
+  <!-- Dashboard -->
+  <section class="view" id="view-dashboard"></section>
+  <!-- Patients -->
+  <section class="view" id="view-patients" hidden></section>
+  <!-- Doctors -->
+  <section class="view" id="view-doctors" hidden></section>
+  <!-- Appointments -->
+  <section class="view" id="view-appointments" hidden></section>
+  <!-- Pharmacy -->
+  <section class="view" id="view-pharmacy" hidden></section>
+  <!-- Invoices -->
+  <section class="view" id="view-invoices" hidden></section>
+  <!-- Reports -->
+  <section class="view" id="view-reports" hidden></section>
+  <!-- Settings -->
+  <section class="view" id="view-settings" hidden></section>
+</main>
+</div>
+
+<!-- Modal -->
+<div id="modalOverlay" class="modal-overlay" hidden>
+  <div class="modal" id="modalBox"></div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="toast" hidden></div>
+
+<script src="js/store.js"></script>
+<script src="js/pharmacy.js"></script>
+<script src="js/reports.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
